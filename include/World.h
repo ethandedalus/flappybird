@@ -29,6 +29,16 @@ public:
     GetOrRegisterPool<T>()->Insert(e, c);
   }
 
+  template <typename T>
+  bool HasComponent(Entity e) noexcept {
+    return GetOrRegisterPool<T>()->HasEntity(e);
+  }
+
+  template <typename T>
+  T& GetComponent(Entity e) noexcept {
+    return GetOrRegisterPool<T>()->Get(e);
+  }
+
   template <typename First, typename... Rest, typename F>
   void Each(F fn) {
     auto* pool = GetOrRegisterPool<First>();

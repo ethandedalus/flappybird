@@ -2,10 +2,15 @@
 
 #include <raylib.h>
 
+#include <chrono>
+#include <unordered_map>
+
 #include "World.h"
 
 class Game {
 public:
+  using SteadyClock = std::chrono::steady_clock;
+
   Game() noexcept;
   ~Game() noexcept;
 
@@ -13,11 +18,15 @@ public:
   void Run() noexcept;
 
 private:
-  void InputSystem() noexcept;
+  void AddPipes() noexcept;
+  void InputSystem(float dt) noexcept;
   void RenderSystem() noexcept;
-  void PhysicsSystem() noexcept;
+  void PhysicsSystem(float dt) noexcept;
+  void CollisionSystem() noexcept;
   void Update() noexcept;
+  bool IsKeyPressedThrottled(int key, float cooldown, float dt) noexcept;
 
-  World     m_world;
-  Texture2D m_spritesheet;
+  World                          m_world;
+  Texture2D                      m_spritesheet;
+  std::unordered_map<int, float> m_key_cooldowns;
 };

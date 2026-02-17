@@ -5,8 +5,8 @@
 struct Sprite {
   Rectangle src;
   Rectangle dst;
-  float     offset_x;
-  float     offset_y;
-  float     rotation;
-  Color     tint;
+  float     offset_x = 0.0F;
+  float     offset_y = 0.0F;
+  float     rotation = 0.0F;
+  Color     tint     = WHITE;
 };

@@ -23,6 +23,7 @@ include(cmake/fetch_raylib.cmake)
 set(
     SRCS
 
+    src/RaylibExt.cc
     src/World.cc
     src/Game.cc
 )
